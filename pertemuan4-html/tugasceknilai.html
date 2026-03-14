@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Cek Nilai</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Selamat Datang di Website Pengecekan Nilai Mahasiswa</h1>
+    </header>
+    
+    <div class="container">
+        <section class="content">
+            <form action="#" method="post" id="formnilai">
+                <h2>Cek Nilai Mahasiswa</h2>
+                <p>Silahkan isi formulir di bawah ini untuk Mengecek Grade Nilai Mahasiswa</p>
+
+                <label for="nama"><b>Nama Lengkap:</b></label><br>
+                <input type="text" name="nama" id="nama" required><br><br>
+                
+                <label for="npm"><b>Nomor Pokok Mahasiswa:</b></label><br>
+                <input type="number" name="npm" id="npm" required><br><br>
+
+                <label for="nilai"><b>Masukan Nilai:</b></label><br>
+                <input type="number" name="nilai" id="nilai" required><br><br>
+
+                <button type="button" class="btn" onclick="menghitungnilai()">Cek Nilai</button>
+            </form>
+        </section>
+        
+        <aside class="sidebar">
+            <h1>Hasil</h1>
+            <p id="hasil"></p>
+        </aside>
+    </div>
+
+    <script>
+        function menghitungnilai() {
+            let nama = document.getElementById("nama").value;
+            let npm = document.getElementById("npm").value;
+            let nilai = parseInt(document.getElementById("nilai").value);
+            let pesan = "";
+
+            if (nilai < 0 || nilai > 100 || isNaN(nilai)) {
+                pesan = "Nilai tidak valid!";
+            } else if (nilai >= 80 && nilai <= 100) {
+                pesan = "A";
+            } else if (nilai >= 70 && nilai <= 79) {
+                pesan = "B";
+            } else if (nilai >= 60 && nilai <= 69) {
+                pesan = "C";
+            } else if (nilai >= 50 && nilai <= 59) {
+                pesan = "D";
+            } else if (nilai >= 0 && nilai <= 49) {
+                pesan = "E";
+            }
+
+            let hasilOutput = document.getElementById("hasil");
+            
+            if (pesan === "Nilai tidak valid!") {
+                hasilOutput.innerHTML = pesan;
+                hasilOutput.style.color = "red";
+            } else {
+                hasilOutput.innerHTML = "Nama: " + nama + "<br>NPM: " + npm + "<br>Huruf Mutu: <strong>" + pesan + "</strong>";
+                hasilOutput.style.color = "black";
+            }
+        }
+    </script>
+</body>
+</html>
