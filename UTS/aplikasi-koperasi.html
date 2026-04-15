@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>Aplikasi Belanja Koperasi</title>
+</head>
+<body>
+    <h1>Selamat datang di aplikasi belanja koperasi</h1> <br>
+    <form action="proses.php" method="POST">
+        <input type="text" name="nama" id="nama" placeholder="Masukkan nama anda" required minlength="3" maxlength="20"><br>
+        
+        <input type="text" name="NIM" id="NIM" placeholder="masukkan NIM anda" required><br>
+        
+        <input type="email" name="email" id="email" placeholder="masukkan email anda" required><br>
+        
+        <p>Pilih Jenis Layanan</p>
+        <input type="radio" name="layanan" value="Reguler" required>Reguler<br>
+        <input type="radio" name="layanan" value="Prioritas" required>Prioritas Tambahan 3000<br>
+        
+        <p>Pilih Barang</p>
+        <input type="checkbox" name="barang[]" value="Pencil"> Pensil (2000)
+        <input type="number" name="jumlah_pencil" min="1" value="1"><br>
+        
+        <input type="checkbox" name="barang[]" value="Penghapus"> Penghapus (2000)
+        <input type="number" name="jumlah_penghapus" min="1" value="1"><br>
+        
+        <input type="checkbox" name="barang[]" value="Peruncing"> Peruncing (3000)
+        <input type="number" name="jumlah_peruncing" min="1" value="1"><br>
+        
+        <br><input type="submit" name="submit" value="Pesan">
+    </form>
+</body>
+</html>
