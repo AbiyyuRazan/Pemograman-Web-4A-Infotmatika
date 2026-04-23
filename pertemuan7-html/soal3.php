@@ -9,19 +9,15 @@
 
 <?php
 if (isset($_POST['submit3'])) {
-    // Menangkap inputan string
     $input_hewan = $_POST['hewan'];
     
-    // Fungsi explode() mengubah teks yang dipisah koma menjadi Array
     $array_hewan = explode(",", $input_hewan);
     
     echo "<div class='hasil-box'>";
     echo "Daftar Hewan dalam Array: <ul>";
     
-    // Looping array menggunakan foreach
     foreach ($array_hewan as $nama) {
-        echo "<li>" . trim($nama) . "</li>"; // trim() untuk menghapus spasi berlebih
-    }
+        echo "<li>" . trim($nama) . "</li>"; 
     
     echo "</ul></div>";
 }

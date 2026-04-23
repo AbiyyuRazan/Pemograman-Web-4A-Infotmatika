@@ -11,7 +11,6 @@
 if (isset($_POST['submit4'])) {
     $angka = $_POST['angka'];
     
-    // Penggunaan Ternary Operator
     $status = ($angka % 2 == 0) ? "Genap" : "Ganjil";
     
     echo "<div class='hasil-box'>";
