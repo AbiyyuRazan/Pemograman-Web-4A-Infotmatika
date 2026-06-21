@@ -1,3 +1,13 @@
+<?php
+// Wajib diletakkan di paling atas sebelum kode HTML/sintaksis lain
+session_start();
+
+// Proteksi halaman: Jika user belum login, lempar kembali ke halaman login.php
+if (!isset($_SESSION['login'])) {
+    header("Location: login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -46,45 +56,40 @@
 
         .sidebar {
             flex: 1;
-            padding: 20px;
-            background-color: #BDC3C7;
-            border-radius: 10px;
             margin-left: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .btn {
+            display: block;
             width: 100%;
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #db343f;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #9c1328;
             color: white;
             text-align: center;
             text-decoration: none;
             border-radius: 5px;
-            margin-top: 10px;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-            font-size: 16px;
+            font-weight: bold;
         }
 
         .btn:hover {
-            background-color: gray;
-            transform: scale(1.02);
+            background-color: #7d0f20;
         }
 
-        input, select, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
+        /* Styling khusus tombol logout */
+        .btn-logout {
+            background-color: #333;
+        }
+        .btn-logout:hover {
+            background-color: #000;
         }
 
         .hasil-box {
-            margin-top: 20px;
+            margin-top: 15px;
             padding: 15px;
             background-color: #fff;
             border-left: 5px solid #9c1328;
@@ -112,18 +117,22 @@
                     default: echo "<h2>Halaman tidak ditemukan.</h2>"; break;
                 }
             } else {
-                echo "<h2>Selamat Datang!</h2>";
-                echo "<p>Silakan klik salah satu menu di sidebar samping untuk mencoba aplikasi.</p>";
+                echo "<h2>Selamat Datang, <strong>" . htmlspecialchars($_SESSION['username']) . "</strong>!</h2>";
+                echo "<p style='margin-top:10px;'>Silakan klik salah satu menu di sidebar samping untuk mencoba aplikasi.</p>";
             }
             ?>
         </div>
 
         <div class="sidebar">
-            <h3 style="text-align:center; color:#333; margin-bottom:15px;">Menu Navigasi</h3>
+            <h3 style=\"text-align:center; color:#333; margin-bottom:15px;\">Menu Navigasi</h3>
             <a href="index.php?halaman=soal1" class="btn">Soal 1</a>
-            <a href="index.php?halaman=soal2" class="btn">Soal 2 </a>
+            <a href="index.php?halaman=soal2" class="btn">Soal 2</a>
             <a href="index.php?halaman=soal3" class="btn">Soal 3</a>
-            <a href="index.php?halaman=soal4" class="btn">Soal 4 </a>
+            <a href="index.php?halaman=soal4" class="btn">Soal 4</a>
+            
+            <hr style="margin: 15px 0; border: 0; border-top: 1px solid #ddd;">
+            
+            <a href="logout.php" class="btn btn-logout" onclick="return confirm('Apakah Anda yakin ingin logout?')">Logout</a>
         </div>
     </div>
 
